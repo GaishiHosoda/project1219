@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="css/sample.css">
+<title>GoogleBook検索</title>
+</head>
+<body>
+
+  <header id=header class="header">
+    <h1>  </h1>
+    <img class="logo" src="https://www.google.com/intl/en_ALL/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="GoogleBooks検索">
+    <div class="search_container">
+      <input  size="25" type="text" id="keyword" placeholder="本を検索">
+      <button type="submit" id="readbook">Search</button>
+    </div>
+
+  <p>書籍の全文が登録された世界最大級の包括的なインデックスを検索できます。</p>
+  <button id="open-sample-dialog">マイライブラリ</button>
+
+  <div id="sample-dialog" title="サンプルダイアログ" style="display:none;">
+    <p>ダイアログです</p>
+  </div>
+</header>
+
+<div class="result" id="result">
+    <img class="logo2" src="https://www.google.com/intl/en_ALL/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="GoogleBooks検索">
+    <input  class="input2" size="50" type="text" id="keyword" placeholder="本を検索">
+    <button type="submit" id="readbook"><img class="icon" src="./image/icon.png" alt=""></button>
+</div>
+
+<div class="bardiv" id="bar">
+<img class="bar" src="./image/resultbar.png" alt="検索結果">
+</div>
+
+  <main>
+    <p class="resulttext" id="content"></p>
+  </main>
+
+
+<script src="js/jquery-3.5.1.min.js"></script>
+<script>
+
+// 警告表示
+$("#open-sample-dialog").on("click", function(){
+  $("#sample-dialog").dialog();
+});
+
+// クリックイベント
+$('button').click(function() {
+        console.log('クリックされました！');
+        const bookname = $("#keyword").val()
+        console.log(bookname);
+        $("#header").hide();
+        $("#result").show();
+        $("#bar").show();
+
+
+//入力値取得
+
+const url = "https://www.googleapis.com/books/v1/volumes?q=" + bookname;
+
+
+// $.get() を使う[開始]
+
+$.get(url, function(data){
+  console.log(data);
+  const items =data.items
+  let view = "";
+  for (let i =0; i < items.length; i++){
+    const item=items[i]
+    console.log(item.volumeInfo.title);
+    console.log(item.volumeInfo.authors);
+    console.log(item.volumeInfo.description);
+
+    const title = item.volumeInfo.title;
+    const author =item.volumeInfo.authors;
+    const desc =item.volumeInfo.description;
+
+    view += "<ul><li>"+title+author+"</li></ul>";
+  }
+  $("#content").html(view)
+})
+
+
+
+});
+// $.get() を使う[終了]
+
+</script>
+</body>
+</html>
