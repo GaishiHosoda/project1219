@@ -91,7 +91,7 @@ $.get(url, function(data2){
     const item=items[i]
     const link =item.volumeInfo.imageLinks.smallThumbnail;
     
-    bookimage += '<div style="height:250px; width:200px;"><img src="'+link+'"></div>';
+    bookimage += '<div style="height:250px; width:200px;"><img style="height:200px;" src="'+link+'"></div>';
   }
   $("#bookimage").html(bookimage)
 })
