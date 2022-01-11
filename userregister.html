@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="./css/reset.css">
+<link rel="stylesheet" href="css/register.css">
+<link rel="stylesheet" href="css/mypage.css">
+
+
+<title>Mite-Kau|会員登録画面</title>
+</head>
+<body>
+
+<!-- コンテンツ表示画面 -->
+
+<header>
+<div class="mypage" id=mypage>
+      
+  <!-- ここからナビゲーション -->
+  <section class="start">
+  
+      <div class= "nav-inner">
+          <!-- Oil Paintingーのimage -->
+          <a class="logo" href="index.html"><img class="icon" src="./img/icon_art.jpg" alt="companylogo" >  </a>
+          
+          <button class="btn-trigger">
+              <svg viewBox="0 0 44 44" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-labelledby="menuButtonTitle">
+                  <title id="menuButtonTitle">Menu</title>
+                  <symbol id="bar">
+                  <rect width="28" height="2" fill="#000"></rect>
+                  </symbol>
+                  <use xlink:href="#bar" x="8" y="14"></use>
+                  <use xlink:href="#bar" x="8" y="24"></use>
+                  <use xlink:href="#bar" x="8" y="34"></use>
+              </svg>
+          </button>
+
+          <div class="navigation-container">
+              <ul class="navigation">
+              <li class="nav-item"><a href="./index.html#about">About</a> </li>
+              <li class="nav-item"><a href="./index.html#service">Service</a></li>
+              <li class="nav-item"><a href="./index.html#space">Space</a></li>
+              <li class="nav-item"><a href="./index.html#listing">Listing</a></li>
+              <li class="nav-item"><a href="./index.html#Spaceowner">Space Owner</a></li>
+              </ul>
+          </div>
+      </div>
+      
+  </section>
+</header>
+  <!-- ここまでナビゲーション -->
+
+  <!-- ここはメイン画像 -->
+  <div class=shashin>
+      <div class="title">
+      <h1>展示まであとすこしです</h1>
+      <p>作者情報を登録しましょう</p>
+      </div>
+      </div>
+      
+
+  <!-- ここまでメイン画像 -->
+
+  <!-- ここはabout-->
+  <div id="before">
+  <div id="about" class="container">
+      <h2 class="section-title">Register form</h2>
+      <!-- <div class="section-image"><img src="images/about/profile.png" alt=""></div> -->
+
+      <p class="section-name">登録フォーム</p>
+      <div class="midashi"> </div>
+  </div>
+  
+
+  <div class="form-wrapper">
+    <form action="">
+      <dl class="form-inner">
+
+      <dt class="form-title">名前</dt>
+      <dd class="form-item"><input id="uname" type="text" name="name" class="form-parts"></dd>
+
+      <dt class="form-title">生年月日</dt>
+      <dd class="form-item"><input id="birth" type="date" name="birth" class="form-parts"></dd>
+
+      <dt class="form-title">所属</dt>
+      <dd class="form-item"><input id="company" type="text" name="company" class="form-parts"></dd>
+
+      <dt class="form-title">経歴(140字~200字程度)</dt>
+      <dd class="form-item"><input id="description" name="detail" id="description" cols="30" rows="10" class="form-parts"></input></dd>
+
+
+
+        <button id="send" class="btn btn-submit">登録</button>
+
+    </div>
+</div>
+</div>
+
+
+<!--/ After register -->
+
+<div　class="section-name" >
+  <p class="section-name">登録を確認後、後日担当者よりご連絡いたします</p>
+</div>
+
+<!-- start footer -->
+<footer class="footer text-center">
+  <div class="wrapper">
+      <a href="#" class="btn-pagetop" id="btn"><span class="fa fa-angle-up icon-up"></span></a>
+      <small class="copyrights">Copyrights 2022 Tile Art All RIghts Reserved.</small>
+  </div>
+</footer>
+<!-- end footer -->
+
+<!-- JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- JQuery -->
+
+
+<!--** 以下Firebase **-->
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+  import { getDatabase, ref, push, set, onChildAdded, remove, onChildRemoved }
+      from "https://cdnjs.cloudflare.com/ajax/libs/firebase/9.6.0/firebase-database.min.js";
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+  apiKey: "AIzaSyDvObI1bsRRZ7BLEbLCMkO5skEvz86aCLs",
+  authDomain: "arttile-9392a.firebaseapp.com",
+  projectId: "arttile-9392a",
+  storageBucket: "arttile-9392a.appspot.com",
+  messagingSenderId: "1096105557015",
+  appId: "1:1096105557015:web:fa1af1315cb01502e07052"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+
+    const db = getDatabase(app); // RealtimeDBに接続
+    const dbRef = ref(db, "userinfo"); // RealtimeDB内の"chat"を使う
+
+    $("#send").on("click", function () {
+        const msg = {
+            uname: $("#uname").val(),
+            company: $("#company").val(),
+            birth: $("#birth").val(),
+            description: $("#description").val()
+
+        }
+        const newPostRef = push(dbRef); // pushできる状態にする
+        set(newPostRef, msg); // DBに値を送信
+    
+    });
+    $("#send").on("click", function () {
+        location.href = "./thankyou.html";
+    });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

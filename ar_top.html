@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mite-Kau|AR trial</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="./css/artop.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
+    <link rel="shortcut icon" href="favicon.ico">
+</head>
+
+
+
+    <!-- ここからナビゲーション -->
+    <section class="start">
+        
+        <div class= "nav-inner">
+            <!-- Oil Paintingーのimage -->
+            <a class="logo" href="index.html"><img class="icon" src="./img/icon_art.jpg" alt="companylogo" >  </a>
+            
+            <button class="btn-trigger">
+                <svg viewBox="0 0 44 44" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-labelledby="menuButtonTitle">
+                    <title id="menuButtonTitle">Menu</title>
+                    <symbol id="bar">
+                    <rect width="28" height="2" fill="#000"></rect>
+                    </symbol>
+                    <use xlink:href="#bar" x="8" y="14"></use>
+                    <use xlink:href="#bar" x="8" y="24"></use>
+                    <use xlink:href="#bar" x="8" y="34"></use>
+                </svg>
+            </button>
+
+            <div class="navigation-container">
+                <ul class="navigation">
+                <li class="nav-item"><a href="./index.html#about">About</a> </li>
+                <li class="nav-item"><a href="./index.html#service">Service</a></li>
+                <li class="nav-item"><a href="./index.html#space">Space</a></li>
+                <li class="nav-item"><a href="./index.html#listing">Listing</a></li>
+                <li class="nav-item"><a href="./index.html#Spaceowner">Space Owner</a></li>
+                </ul>
+            </div>
+        </div>
+        
+    </section>
+    <!-- ここまでナビゲーション -->
+
+    <!-- ここはメイン画像 -->
+    <div class=shashin>
+        <div class="title">
+        <h1>展示シミュレーション</h1>
+        <p>ARを使って展示した様子をイメージしましょう</p>
+        </div>
+        </div>
+        
+
+    <!-- ここまでメイン画像 -->
+
+    <!-- ここからAR Quick Look -->
+
+    <div id="about" class="container">
+        <h2 class="section-title">AR Quick Look</h2>
+        <!-- <div class="section-image"><img src="images/about/profile.png" alt=""></div> -->
+
+        <p class="section-name">iPhone/iPadでARを体験する</p>
+        <div class="midashi"> </div>
+
+        <p class="section-text">iPhoneやiPadをご利用の方は、下の写真をタップしてみてください。ARを用いて飾った時のサイズ感をイメージすることができます。</p>
+        </p>
+    </div>
+
+
+    <div class="arquicklook">
+    <a rel="ar" href="./img/arimage3.usdz">
+        <img src="./img/arimage3.jpg">
+    </a>
+    </div>
+
+
+    <!-- ここまでAR Quick Look -->
+
+
+    <!-- ここからChrome用AR-->
+
+    <div id="about" class="container">
+        <h2 class="section-title">お手軽AR</h2>
+        <!-- <div class="section-image"><img src="images/about/profile.png" alt=""></div> -->
+
+        <p class="section-name">Google Chrome/AndroidでARを体験する</p>
+        <div class="midashi"> </div>
+
+        <p class="section-text">PC/Android端末をご利用の方は、下のボタンをクリックしてみてください。横4インチ、縦2インチのキャンパスです</p>
+        </p>
+    </div>
+<!-- ここから登録フォーム -->
+<section id="contact" class="contact">
+    
+    <a href="./ar.html" target=”_blank”><input class="btn btn-submit" type="submit" value="ARを起動(別タブ)" ></a>
+    <p style="text-align: center;">推奨環境(Google Chrome/Android)</p>
+ 
+
+    </div>
+</section>
+<!-- ここまで登録フォーム -->
+
+    <!-- ここからフッター -->
+    <footer class="footer text-center">
+        <div class="wrapper">
+            <a href="#" class="btn-pagetop" id="btn"><span class="fa fa-angle-up icon-up"></span></a>
+            <small class="copyrights">Copyrights 2022 Tile Art All RIghts Reserved.</small>
+        </div>
+    </footer>
+        
+    
+    <!-- ここまでフッター -->
+    
+    
+
+    
+<!-- JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- JQuery -->
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+<script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+          
+            // Your web app's Firebase configuration
+            const firebaseConfig = {
+              apiKey: "AIzaSyARkTxIoEcVTZ58jdgU4ABobs6SCQrYeWw",
+              authDomain: "artproject-97dee.firebaseapp.com",
+              projectId: "artproject-97dee",
+              storageBucket: "artproject-97dee.appspot.com",
+              messagingSenderId: "855366397614",
+              appId: "1:855366397614:web:6a761e5c509343d6bf873f"
+            };
+          
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+        
+            $(function(){
+              $('#submit').on('click', function(){
+                const email = $('#email').val();
+                const pass  = $('#pass').val();
+                firebase.auth().createUserWithEmailAndPassword(email, pass)
+                  .then(user => {
+                    console.log('アカウント作成成功');
+                  })
+                  .catch(user => {
+                    console.log('アカウント作成失敗');
+                  });
+              });
+            });
+</script>
+        
+
+    
+        
+<script type="text/javascript">
+        // Initialize jRumble on Selector
+        $('#eyecatch1').jrumble({
+	    speed: 200
+        });
+
+        // Start rumble on element
+        $('#eyecatch1').trigger('startRumble');
+
+        // Stop rumble on element
+        $('#eyecathc1').trigger('stopRumble');
+
+        
+
+        // $('#eyecatch1').hover(function(){
+	    //     $(this).trigger('startRumble');
+        //     }, function(){
+	    //     $(this).trigger('stopRumble');
+        // });
+					
+        
+</script>
+
+
+    
+</body>
+
+
+</html>
+

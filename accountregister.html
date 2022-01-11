@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mite-Kau|Register</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/register.css">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <!-- FirebaseUI の追加 -->
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.css" />
+
+</head>
+
+
+
+    <!-- ここからナビゲーション -->
+    <section class="start">
+        
+        <div class= "nav-inner">
+            <!-- Oil Paintingーのimage -->
+            <a class="logo" href="index.html"><img class="icon" src="./img/icon_art.jpg" alt="companylogo" >  </a>
+            
+            <button class="btn-trigger">
+                <svg viewBox="0 0 44 44" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-labelledby="menuButtonTitle">
+                    <title id="menuButtonTitle">Menu</title>
+                    <symbol id="bar">
+                    <rect width="28" height="2" fill="#000"></rect>
+                    </symbol>
+                    <use xlink:href="#bar" x="8" y="14"></use>
+                    <use xlink:href="#bar" x="8" y="24"></use>
+                    <use xlink:href="#bar" x="8" y="34"></use>
+                </svg>
+            </button>
+
+            <div class="navigation-container">
+                <ul class="navigation">
+                <li class="nav-item"><a href="./index.html#about">About</a> </li>
+                <li class="nav-item"><a href="./index.html#service">Service</a></li>
+                <li class="nav-item"><a href="./index.html#space">Space</a></li>
+                <li class="nav-item"><a href="./index.html#listing">Listing</a></li>
+                <li class="nav-item"><a href="./index.html#Spaceowner">Space Owner</a></li>
+                </ul>
+            </div>
+        </div>
+        
+    </section>
+    <!-- ここまでナビゲーション -->
+
+    <!-- ここはメイン画像 -->
+    <div class=shashin>
+        <div class="title">
+        <h1>展示まであとすこしです</h1>
+        <p>アカウントを作成しましょう</p>
+        </div>
+        </div>
+        
+
+    <!-- ここまでメイン画像 -->
+
+    <!-- ここはabout-->
+
+    <div id="about" class="container">
+        <h2 class="section-title">Sign In</h2>
+        <!-- <div class="section-image"><img src="images/about/profile.png" alt=""></div> -->
+
+        <p class="section-name">アカウント登録</p>
+        <div class="midashi"> </div>
+    </div>
+
+<!-- 登録フォーム -->
+<div id="firebaseui-auth-container"></div>
+<!-- ここまで登録フォーム -->
+
+<!-- ここから登録フォーム -->
+<section id="contact" class="contact">
+
+    <div class="form-wrapper">
+        <form action="">
+            <dl class="form-inner">
+            
+                <dt class="form-title">メールアドレス</dt>
+                <dd class="form-item3"><input id="email "type="email" name="email" class="form-parts"></dd>
+
+                            
+                <dt class="form-title">パスワード</dt>
+                <dd class="form-item3"><input id="password" type="password" name="password" class="form-parts"></dd>
+
+          </dl>
+
+            <input type="submit" id="register" value="送信" class="btn btn-submit">
+
+        </form>
+
+    </div>
+</section>
+<!-- ここまで登録フォーム -->
+
+<!-- ここからイメージ -->
+  
+    <section id="cource" class="cource">
+    <div id="cource" class="container">
+        <h2 class="section-title" id="cource">image</h2>
+
+        <p class="section-name">展示イメージ</p>
+        <div class="midashi"> </div>
+    </div>
+
+    <div id="auth"></div>
+<!-- ここまでTechnology -->
+
+    <!-- ここからフッター -->
+    <footer class="footer text-center">
+        <div class="wrapper">
+            <a href="#" class="btn-pagetop" id="btn"><span class="fa fa-angle-up icon-up"></span></a>
+            <small class="copyrights">Copyrights 2022 Tile Art All RIghts Reserved.</small>
+        </div>
+    </footer>
+        
+    
+    <!-- ここまでフッター -->
+    
+    
+
+    
+<!-- JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- JQuery -->
+
+<!--** 以下Firebase **-->    
+<script src="/__/firebase/7.16.0/firebase-app.js"></script> 
+<script src="/__/firebase/7.16.0/firebase-auth.js"></script> 
+<script src="/__/firebase/init.js"></script> 
+
+<!-- Firebaseへの接続 -->
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyARkTxIoEcVTZ58jdgU4ABobs6SCQrYeWw",
+      authDomain: "artproject-97dee.firebaseapp.com",
+      projectId: "artproject-97dee",
+      storageBucket: "artproject-97dee.appspot.com",
+      messagingSenderId: "855366397614",
+      appId: "1:855366397614:web:6a761e5c509343d6bf873f"
+    };
+  
+    //----------------------------------------------
+    // Firebaseの初期化
+    //----------------------------------------------
+    // コンソールの内容をそのままコピペ
+    var config = {
+        apiKey: "AIzaSyARkTxIoEcVTZ58jdgU4ABobs6SCQrYeWw",
+        authDomain: "artproject-97dee.firebaseapp.com",
+        projectId: "artproject-97dee",
+        storageBucket: "artproject-97dee.appspot.com",
+        messagingSenderId: "855366397614"
+    };
+    firebase.initializeApp(config);
+
+</script>
+
+<script>
+    ui.start('#firebaseui-auth-container', {
+    signInOptions: [
+    firebase.auth.EmailAuthProvider.PROVIDER_ID
+    ],
+  // Other config options...
+});
+
+ui.start('#firebaseui-auth-container', {
+  signInOptions: [
+    {
+      provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+      signInMethod: firebase.auth.EmailAuthProvider.EMAIL_LINK_SIGN_IN_METHOD
+    }
+  ],
+  // Other config options...
+});
+
+</script>
+
+
+// <!-- ログイン処理 -->
+<script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/3.5.2/firebase-ui-auth__ja.js"></script>
+  <script src="./config.js"></script>
+  <script>
+    //----------------------------------------------
+    // Firebase UIの設定
+    //----------------------------------------------
+    var uiConfig = {
+        // ログイン完了時のリダイレクト先
+        signInSuccessUrl: '/done.html',
+
+        // 利用する認証機能
+        signInOptions: [
+          firebase.auth.EmailAuthProvider.PROVIDER_ID  //メール認証
+        ],
+
+        // 利用規約のURL(任意で設定)
+        tosUrl: 'http://example.com/kiyaku/',
+        // プライバシーポリシーのURL(任意で設定)
+        privacyPolicyUrl: 'http://example.com/privacy'
+      };
+
+      var ui = new firebaseui.auth.AuthUI(firebase.auth());
+      ui.start('#firebaseui-auth-container', uiConfig);
+</script>
+
+
+</body>
+
+
+</html>
+

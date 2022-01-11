@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Mite-Kau|AIカメラを試す</title>
+    <link rel="stylesheet" href="./css/aicamra.css">
+  </head>
+  
+  
+    <!-- ここからナビゲーション -->
+    <section class="start">
+        
+        <div class= "nav-inner">
+            <!-- Oil Paintingーのimage -->
+            <a class="logo" href="index.html"><img class="icon" src="./img/icon_art.jpg" alt="companylogo" >  </a>
+            
+            <button class="btn-trigger">
+                <svg viewBox="0 0 44 44" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-labelledby="menuButtonTitle">
+                    <title id="menuButtonTitle">Menu</title>
+                    <symbol id="bar">
+                    <rect width="28" height="2" fill="#000"></rect>
+                    </symbol>
+                    <use xlink:href="#bar" x="8" y="14"></use>
+                    <use xlink:href="#bar" x="8" y="24"></use>
+                    <use xlink:href="#bar" x="8" y="34"></use>
+                </svg>
+            </button>
+
+            <div class="navigation-container">
+                <ul class="navigation">
+                <li class="nav-item"><a href="./index.html#about">About</a> </li>
+                <li class="nav-item"><a href="./index.html#service">Service</a></li>
+                <li class="nav-item"><a href="./index.html#space">Space</a></li>
+                <li class="nav-item"><a href="./index.html#listing">Listing</a></li>
+                <li class="nav-item"><a href="./index.html#Spaceowner">Space Owner</a></li>
+                </ul>
+            </div>
+        </div>
+        
+    </section>
+    <!-- ここまでナビゲーション -->
+
+    <!-- ここはメイン画像 -->
+    <div class=shashin>
+        <div class="title">
+        <h1>AIカメラを試す </h1>
+        <p>観覧者の手を動きをトラッキング、作品に対する関心度を測定します</p>
+        </div>
+        </div>
+        
+
+    <!-- ここまでメイン画像 -->
+
+  
+  
+  <body>
+
+    <div class="monitor">
+    
+      <button id="stop">手の認識を停止</button><br />
+
+      <canvas id="mycanvas" width="480" height="320"></canvas>
+      <video id="myvideo" width="480" height="320"></video>
+    </div>
+    
+    <!-- 切り替えボタン -->
+    <a href="face.html"><button class="btn" >顔認識に切替える</button><br /></a>
+
+    <script src="https://cdn.jsdelivr.net/npm/handtrackjs@0.0.13/dist/handtrack.min.js"></script>
+    <script>
+      const canvas = document.getElementById("mycanvas");
+      const ctx = canvas.getContext("2d");
+      const video = document.getElementById("myvideo");
+
+      const options = {
+        flipHorizontal: false, // 水平方向の反転
+        maxNumBoxes: 3, // 検出するボックスの最大数
+        scoreThreshold: 0.65 // 予測信頼度のしきい値
+      };
+
+      let state = true;
+      let model;  // 繰り返し利用するために読み込んだ機械学習モデルを格納しておく
+
+      document.getElementById("stop").addEventListener("click", stopEvent);
+
+      ctx.font = "18pt Arial";
+      ctx.fillText("AIカメラを読込中...", 50, 50);
+
+      
+      handTrack.load(options).then(function(model_data) {
+        model = model_data;
+
+        // Webカメラを起動する
+        handTrack.startVideo(video).then(function(status) {
+          if (status) {
+            startDetection();
+          } else {
+            console.log("ビデオエラーが検出されました...", status);
+          }
+        });
+      });
+
+      // 「手」の検出と結果の出力を繰り返し実行する
+      function startDetection() {
+        model.detect(video).then(predictions => {
+          model.renderPredictions(predictions, canvas, ctx, video);
+
+          if (state) requestAnimationFrame(startDetection);
+        });
+      }
+
+      // 停止ボタンが押された時にリアルタイム検出の処理を中断する
+      function stopEvent() {
+        handTrack.stopVideo(video);
+        state = false;
+      }
+    </script>
+  </body>
+</html>

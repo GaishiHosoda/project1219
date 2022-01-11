@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "..\\..\\2022_jscontest\\examples"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "jscontest2022"
+	}
+}
